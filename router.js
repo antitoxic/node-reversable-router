@@ -119,13 +119,14 @@ Router.prototype.build = function (name, params, method) {
  * @return Router
  */
 Router.prototype.registerAppHelpers = function (app) {
+  var self = this;
   var helperName = 'url';
   if (app.helpers) {
     var helpers = {};
-    helpers[helperName] = this.build;
+    helpers[helperName] = function(name, params, method) { return self.build(name, params, method)};
     app.helpers(helpers);
   } else {
-    app.locals[helperName] = this.build
+    app.locals[helperName] = function(name, params, method) { return self.build(name, params, method)};
   }
   return this;
 }
