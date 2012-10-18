@@ -30,6 +30,7 @@ var app = express();
 var Router = require('reversable-router');
 var router = new Router();
 router.extendExpress(app);
+router.registerAppHelpers(app);
 
 app.get('/admin/user/:id', 'admin.user.edit', function(req, res, next){
     var url = app._router.build('admin.user.edit', {id: 2}); // /admin/user/2
