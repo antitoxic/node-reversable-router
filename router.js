@@ -83,6 +83,7 @@ Router.prototype.add = function (method, path, callbacks, options) {
   options.caseSensitive = options.caseSensitive == undefined ? this.caseSensitive : options.caseSensitive;
   if (this.routesByMethodAndPath[method][path] == undefined) {
     var route = new Route(path, options);
+    route.__defineGetter__('name', function() {return this.options.name});
     this.routesByMethod[method] = this.routesByMethod[method] || [];
     this.routesByMethod[method].unshift(route);
     this.routesByMethodAndPath[method][path] = route;
