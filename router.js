@@ -25,7 +25,7 @@ function Router(options) {
     self.dispatch(req, res, next);
   };
 
-  this.caseSensitive = options.caseSensitive == undefined ? false : options.caseSensitive;
+  this.caseSensitive = options.caseSensitive;
 }
 
 /**
@@ -83,6 +83,7 @@ Router.prototype.add = function (method, path, callbacks, options) {
   options.caseSensitive = options.caseSensitive == undefined ? this.caseSensitive : options.caseSensitive;
   if (this.routesByMethodAndPath[method][path] == undefined) {
     var route = new Route(path, options);
+    route.__defineGetter__('name', function() {return this.options.name});
     this.routesByMethod[method] = this.routesByMethod[method] || [];
     this.routesByMethod[method].unshift(route);
     this.routesByMethodAndPath[method][path] = route;
@@ -119,13 +120,14 @@ Router.prototype.build = function (name, params, method) {
  * @return Router
  */
 Router.prototype.registerAppHelpers = function (app) {
+  var self = this;
   var helperName = 'url';
   if (app.helpers) {
     var helpers = {};
-    helpers[helperName] = this.build;
+    helpers[helperName] = function(name, params, method) { return self.build(name, params, method)};
     app.helpers(helpers);
   } else {
-    app.locals[helperName] = this.build
+    app.locals[helperName] = function(name, params, method) { return self.build(name, params, method)};
   }
   return this;
 }
