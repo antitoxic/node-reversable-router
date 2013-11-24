@@ -25,7 +25,7 @@ function Router(options) {
     self.dispatch(req, res, next);
   };
 
-  this.caseSensitive = options.caseSensitive;
+  this.caseSensitive = options.caseSensitive == undefined ? false : options.caseSensitive;
 }
 
 /**
@@ -78,6 +78,7 @@ Router.prototype.add = function (method, path, callbacks, options) {
 
   callbacks = [callbacks]
   method = method.toLowerCase();
+  options = options || {};
 
   this.routesByMethodAndPath[method] = this.routesByMethodAndPath[method] || {};
   options.caseSensitive = options.caseSensitive == undefined ? this.caseSensitive : options.caseSensitive;

@@ -8,9 +8,9 @@
  - Support for anonymous `*` parameters inside the path
  - Supports converting the last anonymous parameter to pairs of `param`=>`value` separated by `/`
  - Improved performance on literal matches
- - Supports callbacks for router parameters. Same logic as `express` native router. 
- - Supports middleware route callbacks. Same logic as `express` native router. 
- - Supports array of middleware route callbacks. Same logic as `express` native router. 
+ - Supports callbacks for router parameters. Same logic as `express` native router.
+ - Supports middleware route callbacks. Same logic as `express` native router.
+ - Supports array of middleware route callbacks. Same logic as `express` native router.
  - Can be used standalone or as replacement for express.js routing.
 
 ## Install
@@ -78,12 +78,12 @@ router.dispatch(req);
 ```
 
 ### Benefits of named routes
-You can easily check the current route in middleware without stating the defined route path. Thus avoding duplication and keeping route paths in a central place. 
+You can easily check the current route in middleware without stating the defined route path. Thus avoding duplication and keeping route paths in a central place.
 
 This allows the path to the route to be changed as frequently while the rest of the logic across middleware or views to remain the same.
 
 ### Generating URLs
-Both example above incude a URL generation. 
+Both example above incude a URL generation.
 
 If you're using express:
 ```js
@@ -106,7 +106,7 @@ app.get('/admin/(user/(edit/:id/)(album/:albumId/):session/)test', 'admin', func
 });
 ```
 
-Brackets define the limits of the optional parts. Here you have 3 optional parts. 2 of them nested in the other. 
+Brackets define the limits of the optional parts. Here you have 3 optional parts. 2 of them nested in the other.
 
 If you don't pass all the parameters inside a optional part, the part will simply be removed from the generated URL.
 
@@ -124,9 +124,9 @@ url('admin', {albumId: 2, session: 'qwjdoqiwdasdj12asdiaji198a#asd'});
 // will generate: /admin/user/album/2/qwjdoqiwdasdj12asdiaji198a/test
 ```
 ```js
-url('admin', {id: 4, albumId:2);
+url('admin', {id: 4, albumId:2});
 // will generate: /admin/test
-// because :session parameter is missing and the optional part 
+// because :session parameter is missing and the optional part
 // that contains it contains also the other 2 parts
 ```
 
@@ -177,7 +177,7 @@ url('admin.user.edit', {id:2, _masked: ['any','thing'], sort: 'name', 'order': '
 ```
 
 
-## Future development planned 
+## Future development planned
 
 ### Publish
  - Organise and publish tests
@@ -193,7 +193,7 @@ url('admin.user.edit', {id:2, _masked: ['any','thing'], sort: 'name', 'order': '
 
 Copyright (c) 2012 Anton Stoychev <anton@napopa.com>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the
 rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
