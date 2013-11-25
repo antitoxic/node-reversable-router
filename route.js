@@ -69,7 +69,7 @@ Route.prototype.compile = function () {
 
   //the last `masked` parameter is optional
   if (path.slice(-1) == '/') {
-    path = path.substr(0, -1);
+    path = path.slice(0, -1);
   }
 
   this.hasMaskedWildcard = hasMaskedWildcard;
@@ -145,7 +145,7 @@ Route.prototype.compile = function () {
 Route.prototype.match = function (url) {
   //make sure the last `/` is trimmed off the url, otherwise last splash can falsely be empty string, i.e. ''
   if (url.slice(-1) == '/') {
-    url = url.substr(0, -1);
+    url = url.slice(0, -1);
   }
   var path = this.path;
 
