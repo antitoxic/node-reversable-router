@@ -1,7 +1,7 @@
 # reversable-router
 
 ***
-The project is without an active maintainer and is looking for one. Please see issue #6 for discussion on the topic.
+The project is without an active maintainer and is looking for one. Please see  [issue #6](https://github.com/web-napopa/node-reversable-router/issues/6) for discussion on the topic.
 ***
 
 
