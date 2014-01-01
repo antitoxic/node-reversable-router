@@ -1,4 +1,10 @@
 # reversable-router
+
+***
+The project is without an active maintainer and is looking for one. Please see issue #6 for discussion on the topic.
+***
+
+
 `node.js` module for routing HTTP requests. Can be used standalone or as part of [express.js](http://expressjs.com/) framework.
 
 **Feature overview**:
