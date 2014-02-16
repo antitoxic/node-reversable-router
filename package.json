@@ -1,7 +1,7 @@
 {
   "name": "reversable-router",
   "description": "HTTP request router with named reversable routes",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": {
     "name": "Anton Stoychev",
     "email": "anton@napopa.com"
